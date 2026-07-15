@@ -9,6 +9,15 @@ A modern storefront website for [ZVINTAG3](https://www.ebay.ca/str/zvintag3), a 
 - Featured products pulled from the live eBay store
 - Category filtering (Vintage Clothing, Streetwear, Retro Tees, Denim, Accessories)
 - Direct links to eBay listings for purchases
+- Instagram and TikTok social links
+
+## Refreshing product data
+
+Product images and eBay URLs are paired using eBay's listing hash metadata. To refresh featured products from the live store:
+
+```bash
+python3 scripts/fetch-products.py
+```
 
 ## Quick Start
 
