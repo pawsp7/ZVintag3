@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZVINTAG3 — Hand-picked vintage streetwear, designer apparel, and classic sportswear. Shop curated vintage finds on eBay.">
+  <title>ZVINTAG3 | Vintage · Retro · Rare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/images/logo-mark.png" type="image/png">
+</head>
+<body>
+  <div class="corner-bracket corner-bracket--tl" aria-hidden="true"></div>
+  <div class="corner-bracket corner-bracket--tr" aria-hidden="true"></div>
+  <div class="corner-bracket corner-bracket--bl" aria-hidden="true"></div>
+  <div class="corner-bracket corner-bracket--br" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="header__inner container">
+      <a href="#" class="logo" aria-label="ZVINTAG3 Home">
+        <img src="assets/images/logo-mark.png" alt="" class="logo__mark" width="40" height="31">
+        <span class="logo__text">ZVINTA<span class="logo__accent">G</span>3</span>
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#shop" class="nav__link">Shop</a>
+        <a href="#categories" class="nav__link">Categories</a>
+        <a href="#about" class="nav__link">About</a>
+        <a href="#contact" class="nav__link">Contact</a>
+      </nav>
+
+      <a href="https://www.ebay.ca/str/zvintag3" class="btn btn--primary header__cta" target="_blank" rel="noopener noreferrer">
+        Shop on eBay
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <a href="#shop" class="mobile-nav__link">Shop</a>
+      <a href="#categories" class="mobile-nav__link">Categories</a>
+      <a href="#about" class="mobile-nav__link">About</a>
+      <a href="#contact" class="mobile-nav__link">Contact</a>
+      <a href="https://www.ebay.ca/str/zvintag3" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Shop on eBay</a>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="hero__banner-wrap">
+        <img src="assets/images/banner.png" alt="ZVINTAG3 — Hand-Picked Vintage Finds" class="hero__banner" width="1280" height="290">
+      </div>
+      <div class="hero__content container">
+        <p class="hero__eyebrow">NOW ON EBAY</p>
+        <h1 class="hero__title">Hand-Picked<br>Vintage Finds</h1>
+        <p class="hero__tagline">VINTAGE · RETRO · RARE · ONE OF A KIND</p>
+        <a href="https://www.ebay.ca/str/zvintag3" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">Shop Now</a>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat">
+          <span class="stat__value">100%</span>
+          <span class="stat__label">Positive Feedback</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">987+</span>
+          <span class="stat__label">Items Listed</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">121</span>
+          <span class="stat__label">Items Sold</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">13</span>
+          <span class="stat__label">Followers</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-header__eyebrow">Browse by Style</span>
+          <h2 class="section-header__title">Categories</h2>
+        </div>
+        <div class="categories__grid">
+          <button class="category-card category-card--active" data-category="all">
+            <span class="category-card__name">All Items</span>
+          </button>
+          <button class="category-card" data-category="vintage-clothing">
+            <span class="category-card__name">Vintage Clothing</span>
+          </button>
+          <button class="category-card" data-category="streetwear">
+            <span class="category-card__name">Streetwear</span>
+          </button>
+          <button class="category-card" data-category="retro-tees">
+            <span class="category-card__name">Retro Tees</span>
+          </button>
+          <button class="category-card" data-category="denim">
+            <span class="category-card__name">Denim</span>
+          </button>
+          <button class="category-card" data-category="accessories">
+            <span class="category-card__name">Accessories</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop" id="shop">
+      <div class="container">
+        <div class="section-header section-header--row">
+          <div>
+            <span class="section-header__eyebrow">Curated Collection</span>
+            <h2 class="section-header__title">Featured Finds</h2>
+          </div>
+          <a href="https://www.ebay.ca/str/zvintag3" class="btn btn--outline" target="_blank" rel="noopener noreferrer">View All on eBay</a>
+        </div>
+        <div class="products__grid" id="productsGrid">
+          <div class="products__loading">Loading collection…</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about__grid">
+        <div class="about__content">
+          <span class="section-header__eyebrow">Our Story</span>
+          <h2 class="section-header__title">Authentic Vintage,<br>Hand-Selected</h2>
+          <p>Welcome to ZVINTAG3! We specialize in a curated selection of vintage streetwear, designer apparel, and classic sportswear. Every piece in our collection is hand-picked with a focus on quality, authenticity, and the unique character that only true vintage garments possess.</p>
+          <p>We stock a rotating inventory of iconic heritage names like Carhartt, Levi's, and Adidas, alongside bold Y2K-era labels like Ecko Unltd. Whether you are hunting for rugged workwear or rare designer finds, we prioritize items with history and staying power.</p>
+        </div>
+        <div class="about__features">
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">◆</div>
+            <h3 class="feature-card__title">Transparency</h3>
+            <p class="feature-card__text">Detailed condition notes on every garment so you can shop with total confidence.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">◆</div>
+            <h3 class="feature-card__title">Sustainability</h3>
+            <p class="feature-card__text">Choosing vintage means investing in quality materials that have already stood the test of time.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-card__icon" aria-hidden="true">◆</div>
+            <h3 class="feature-card__title">One of a Kind</h3>
+            <p class="feature-card__text">Rare, retro, and unique pieces that help you stand out from the crowd.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container cta-banner__inner">
+        <h2 class="cta-banner__title">Upgrade Your Rotation</h2>
+        <p class="cta-banner__text">Browse 987+ hand-picked vintage pieces on our eBay store.</p>
+        <a href="https://www.ebay.ca/str/zvintag3" class="btn btn--primary btn--lg" target="_blank" rel="noopener noreferrer">Shop on eBay</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#" class="logo logo--footer" aria-label="ZVINTAG3 Home">
+          <img src="assets/images/logo-mark.png" alt="" class="logo__mark" width="36" height="28">
+          <span class="logo__text">ZVINTA<span class="logo__accent">G</span>3</span>
+        </a>
+        <p class="footer__tagline">EBAY STORE</p>
+        <p class="footer__desc">Vintage · Retro · Rare · One of a Kind</p>
+      </div>
+      <div class="footer__links">
+        <h3 class="footer__heading">Quick Links</h3>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+        <a href="https://www.ebay.ca/str/zvintag3" target="_blank" rel="noopener noreferrer">eBay Store</a>
+        <a href="https://www.ebay.ca/cnt/intermediatedFAQ?requested=zvintag3" target="_blank" rel="noopener noreferrer">Contact Seller</a>
+      </div>
+      <div class="footer__links">
+        <h3 class="footer__heading">Categories</h3>
+        <a href="#shop" data-filter="vintage-clothing">Vintage Clothing</a>
+        <a href="#shop" data-filter="streetwear">Streetwear</a>
+        <a href="#shop" data-filter="retro-tees">Retro Tees</a>
+        <a href="#shop" data-filter="denim">Denim</a>
+        <a href="#shop" data-filter="accessories">Accessories</a>
+      </div>
+    </div>
+    <div class="footer__bottom container">
+      <p>&copy; 2026 ZVINTAG3. All purchases are made through our official eBay store.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
