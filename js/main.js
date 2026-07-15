@@ -30,18 +30,19 @@
       const title = escapeHtml(product.title);
       const image = escapeHtml(product.image);
       const url = escapeHtml(product.url);
-      const price = product.price
-        ? '<p class="product-card__price">' + escapeHtml(product.price) + '</p>'
+      const priceLabel = product.price ? escapeHtml(product.price) : '';
+      const priceHtml = priceLabel
+        ? '<span class="product-card__price">' + priceLabel + '</span>'
         : '';
       return (
         '<article class="product-card">' +
-          '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="product-card__link" aria-label="View ' + title + ' on eBay">' +
+          '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="product-card__link" aria-label="View ' + title + ' on eBay for ' + (priceLabel || 'listed price') + '">' +
             '<div class="product-card__image-wrap">' +
               '<img src="' + image + '" alt="' + title + '" class="product-card__image" loading="lazy" width="500" height="500">' +
+              priceHtml +
             '</div>' +
             '<div class="product-card__body">' +
               '<h3 class="product-card__title">' + title + '</h3>' +
-              price +
               '<span class="product-card__cta">View on eBay</span>' +
             '</div>' +
           '</a>' +
@@ -73,7 +74,8 @@
   }
 
   function loadProducts() {
-    fetch('assets/products.json')
+    const productsUrl = new URL('assets/products.json', window.location.href).href;
+    fetch(productsUrl, { cache: 'no-store' })
       .then(function (res) {
         if (!res.ok) throw new Error('Failed to load products');
         return res.json();
