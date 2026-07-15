@@ -120,6 +120,9 @@ button {
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
 }
 
 .logo__mark {
@@ -157,6 +160,7 @@ button {
 }
 
 .header__inner {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -165,8 +169,20 @@ button {
 }
 
 .nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 2rem;
+  z-index: 1;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  z-index: 2;
 }
 
 .nav__link {
@@ -473,12 +489,21 @@ button {
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.4;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   min-height: 2.8em;
+}
+
+.product-card__price {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  color: var(--red);
+  margin-bottom: 0.75rem;
+  line-height: 1;
 }
 
 .product-card__cta {
@@ -653,7 +678,7 @@ button {
 }
 
 .social-links--header {
-  margin-right: 0.5rem;
+  gap: 0.5rem;
 }
 
 .social-link {
@@ -758,10 +783,24 @@ button {
   }
 }
 
+@media (max-width: 1100px) {
+  .nav {
+    gap: 1.25rem;
+  }
+
+  .nav__link {
+    font-size: 0.72rem;
+  }
+
+  .header__cta {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.72rem;
+  }
+}
+
 @media (max-width: 768px) {
   .nav,
-  .header__cta,
-  .social-links--header {
+  .header__actions {
     display: none;
   }
 

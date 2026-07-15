@@ -30,6 +30,9 @@
       const title = escapeHtml(product.title);
       const image = escapeHtml(product.image);
       const url = escapeHtml(product.url);
+      const price = product.price
+        ? '<p class="product-card__price">' + escapeHtml(product.price) + '</p>'
+        : '';
       return (
         '<article class="product-card">' +
           '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="product-card__link" aria-label="View ' + title + ' on eBay">' +
@@ -38,6 +41,7 @@
             '</div>' +
             '<div class="product-card__body">' +
               '<h3 class="product-card__title">' + title + '</h3>' +
+              price +
               '<span class="product-card__cta">View on eBay</span>' +
             '</div>' +
           '</a>' +
