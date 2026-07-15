@@ -32,13 +32,15 @@
       const url = escapeHtml(product.url);
       return (
         '<article class="product-card">' +
-          '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="product-card__image-wrap">' +
-            '<img src="' + image + '" alt="' + title + '" class="product-card__image" loading="lazy" width="500" height="500">' +
+          '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="product-card__link" aria-label="View ' + title + ' on eBay">' +
+            '<div class="product-card__image-wrap">' +
+              '<img src="' + image + '" alt="' + title + '" class="product-card__image" loading="lazy" width="500" height="500">' +
+            '</div>' +
+            '<div class="product-card__body">' +
+              '<h3 class="product-card__title">' + title + '</h3>' +
+              '<span class="product-card__cta">View on eBay</span>' +
+            '</div>' +
           '</a>' +
-          '<div class="product-card__body">' +
-            '<h3 class="product-card__title">' + title + '</h3>' +
-            '<a href="' + url + '" target="_blank" rel="noopener noreferrer" class="product-card__cta">View on eBay</a>' +
-          '</div>' +
         '</article>'
       );
     }).join('');

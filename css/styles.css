@@ -442,6 +442,12 @@ button {
   transform: translateY(-4px);
 }
 
+.product-card__link {
+  display: block;
+  height: 100%;
+  color: inherit;
+}
+
 .product-card__image-wrap {
   aspect-ratio: 1;
   overflow: hidden;
@@ -585,7 +591,7 @@ button {
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 3rem;
   padding-bottom: 3rem;
 }
@@ -639,6 +645,107 @@ button {
   color: var(--grey-500);
 }
 
+/* Social links */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.social-links--header {
+  margin-right: 0.5rem;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(225, 6, 0, 0.4);
+  color: var(--white);
+  transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+}
+
+.social-link:hover {
+  background: var(--red);
+  border-color: var(--red);
+  transform: translateY(-1px);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.social-section {
+  padding: 4rem 0;
+  border-top: 1px solid rgba(225, 6, 0, 0.2);
+  text-align: center;
+}
+
+.social-section__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5rem;
+}
+
+.social-section__text {
+  color: var(--grey-300);
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.social-section__links {
+  justify-content: center;
+  gap: 1rem;
+}
+
+.social-section__links .social-link {
+  width: 52px;
+  height: 52px;
+}
+
+.social-section__links .social-link svg {
+  width: 24px;
+  height: 24px;
+}
+
+.social-section__label {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+}
+
+.social-section__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer__social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.mobile-nav__social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.mobile-nav__social .social-link {
+  width: 44px;
+  height: 44px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .categories__grid {
@@ -653,7 +760,8 @@ button {
 
 @media (max-width: 768px) {
   .nav,
-  .header__cta {
+  .header__cta,
+  .social-links--header {
     display: none;
   }
 
