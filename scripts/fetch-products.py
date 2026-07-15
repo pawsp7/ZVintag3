@@ -46,6 +46,19 @@ def fetch_store_html() -> str:
     return result.stdout
 
 
+def extract_price(html: str, listing_id: str, chunk: str) -> str | None:
+    for listing_match in re.finditer(rf'"listingId":"{listing_id}"', chunk):
+        local = chunk[listing_match.start():listing_match.start() + 2500]
+        price_match = re.search(
+            r'"displayPrice":\{"_type":"TextualDisplayValue".*?"text":"(C \$[^"]+)"',
+            local,
+            re.DOTALL,
+        )
+        if price_match:
+            return price_match.group(1).replace("C $", "C$")
+    return None
+
+
 def parse_products(html: str) -> list[dict]:
     items = []
     pattern = re.compile(
@@ -77,12 +90,16 @@ def parse_products(html: str) -> list[dict]:
         if title in ("Shop by category", "Filter by category"):
             continue
 
-        items.append({
+        item = {
             "title": title,
             "image": f"https://i.ebayimg.com/images/g/{image_id}/s-l500.jpg",
             "url": f"https://www.ebay.ca/itm/{listing_id}",
             "category": categorize(title),
-        })
+        }
+        price = extract_price(html, listing_id, chunk)
+        if price:
+            item["price"] = price
+        items.append(item)
 
     seen: dict[str, dict] = {}
     for item in items:
