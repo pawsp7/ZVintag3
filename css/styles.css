@@ -430,6 +430,15 @@ button {
   gap: 1.5rem;
 }
 
+.products__meta {
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--grey-500);
+}
+
 .products__loading,
 .products__empty {
   grid-column: 1 / -1;
@@ -437,6 +446,66 @@ button {
   padding: 3rem;
   color: var(--grey-500);
   font-size: 0.9rem;
+}
+
+.pagination {
+  margin-top: 3rem;
+}
+
+.pagination__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.pagination__pages {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination__btn {
+  min-width: 42px;
+  height: 42px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(225, 6, 0, 0.35);
+  background: var(--grey-900);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.pagination__btn:hover:not(:disabled) {
+  border-color: var(--red);
+  background: var(--red);
+}
+
+.pagination__btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pagination__btn--page {
+  min-width: 42px;
+  padding: 0;
+}
+
+.pagination__btn--page.is-active {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.pagination__ellipsis {
+  color: var(--grey-500);
+  padding: 0 0.25rem;
+  user-select: none;
 }
 
 .product-card {

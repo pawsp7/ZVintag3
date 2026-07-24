@@ -13,11 +13,13 @@ A modern storefront website for [ZVINTAG3](https://www.ebay.ca/str/zvintag3), a 
 
 ## Refreshing product data
 
-Product images and eBay URLs are paired using eBay's listing hash metadata. To refresh featured products from the live store:
+Product images, prices, and eBay URLs are paired using eBay's listing hash metadata. To refresh products from the live store:
 
 ```bash
 python3 scripts/fetch-products.py
 ```
+
+The shop section paginates items locally (24 per page). Re-run the fetch script to pull the latest listings from eBay.
 
 ## Quick Start
 

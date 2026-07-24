@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Fetch featured products from the ZVINTAG3 eBay store with correct image-to-listing mapping."""
+"""Fetch products from the ZVINTAG3 eBay store with correct image-to-listing mapping."""
 
 import json
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 STORE_URL = "https://www.ebay.ca/str/zvintag3"
 OUTPUT = Path(__file__).resolve().parent.parent / "assets" / "products.json"
-LIMIT = 24
+MAX_PAGES = 25
+PAGE_DELAY_SECONDS = 0.5
 
 
 def categorize(title: str) -> str:
@@ -32,12 +34,13 @@ def decode_title(raw: str) -> str:
         return raw.replace('\\"', '"').replace("\\'", "'")
 
 
-def fetch_store_html() -> str:
+def fetch_store_html(page: int = 1) -> str:
+    url = STORE_URL if page == 1 else f"{STORE_URL}?_pgn={page}"
     result = subprocess.run(
         [
             "curl", "-sL", "-A",
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            "--max-time", "30", STORE_URL,
+            "--max-time", "30", url,
         ],
         capture_output=True,
         text=True,
@@ -46,7 +49,7 @@ def fetch_store_html() -> str:
     return result.stdout
 
 
-def extract_price(html: str, listing_id: str, chunk: str) -> str | None:
+def extract_price(listing_id: str, chunk: str) -> str | None:
     for listing_match in re.finditer(rf'"listingId":"{listing_id}"', chunk):
         local = chunk[listing_match.start():listing_match.start() + 2500]
         price_match = re.search(
@@ -96,20 +99,40 @@ def parse_products(html: str) -> list[dict]:
             "url": f"https://www.ebay.ca/itm/{listing_id}",
             "category": categorize(title),
         }
-        price = extract_price(html, listing_id, chunk)
+        price = extract_price(listing_id, chunk)
         if price:
             item["price"] = price
         items.append(item)
 
+    return items
+
+
+def fetch_all_products() -> list[dict]:
     seen: dict[str, dict] = {}
-    for item in items:
-        seen[item["url"]] = item
+
+    for page in range(1, MAX_PAGES + 1):
+        html = fetch_store_html(page)
+        page_items = parse_products(html)
+        new_count = 0
+
+        for item in page_items:
+            if item["url"] not in seen:
+                seen[item["url"]] = item
+                new_count += 1
+
+        print(f"Page {page}: {len(page_items)} listings, {new_count} new (total {len(seen)})", file=sys.stderr)
+
+        if new_count == 0:
+            break
+
+        if page < MAX_PAGES:
+            time.sleep(PAGE_DELAY_SECONDS)
+
     return list(seen.values())
 
 
 def main() -> int:
-    html = fetch_store_html()
-    products = parse_products(html)[:LIMIT]
+    products = fetch_all_products()
     if not products:
         print("No products parsed from eBay store.", file=sys.stderr)
         return 1
